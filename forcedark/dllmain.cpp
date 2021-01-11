@@ -35,10 +35,6 @@ LRESULT CALLBACK StaticProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) {
 		SetTextColor((HDC)wp, COLORREF(RGB(241, 241, 241)));
 		SetBkColor((HDC)wp, COLORREF(RGB(37, 37, 38)));
 		return (LRESULT)(HBRUSH)CreateSolidBrush(COLORREF(RGB(37, 37, 38)));
-	case WM_CTLCOLORSCROLLBAR:
-		//SetTextColor((HDC)wp, COLORREF(RGB(241, 241, 241)));
-		SetBkColor((HDC)wp, COLORREF(RGB(37, 37, 38)));
-		return (LRESULT)(HBRUSH)CreateSolidBrush(COLORREF(RGB(37, 37, 38)));
 	default:
 		break;
 	}
