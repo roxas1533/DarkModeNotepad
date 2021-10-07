@@ -10,9 +10,5 @@
 // プリコンパイルするヘッダーをここに追加します
 #include "framework.h"
 #include <Windows.h>
-#include <iostream>
-#include "force.h"
-#include <tchar.h>
-#include <string>
 
 #endif //PCH_H
