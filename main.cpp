@@ -4,6 +4,8 @@
 
 
 int main() {
+	char current_path[MAX_PATH];
+	GetModuleFileNameA(NULL, current_path, MAX_PATH);
 	STARTUPINFOA  tStartupInfo = { 0 };
 	PROCESS_INFORMATION tProcessInfomation = { 0 };
 	bool isSuccess = CreateProcessA(0, (LPSTR)"\"C:\\Windows\\System32\\notepad.exe\""
@@ -16,7 +18,7 @@ int main() {
 		, &tStartupInfo
 		, &tProcessInfomation
 	);
-	std::string path = std::filesystem::absolute("forcedark.dll").string();
+	std::string path = std::filesystem::path(current_path).parent_path().string()+"\\forcedark.dll";
 	LPVOID remoteLibPath = VirtualAllocEx(tProcessInfomation.hProcess, NULL, path.length(), MEM_COMMIT, PAGE_READWRITE);
 	if (remoteLibPath) {
 		bool isWrite = WriteProcessMemory(tProcessInfomation.hProcess, remoteLibPath, path.c_str(), path.length(), NULL);
